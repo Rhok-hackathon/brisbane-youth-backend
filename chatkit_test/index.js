@@ -2,7 +2,7 @@
 const testToken = "https://us1.pusherplatform.io/services/chatkit_token_provider/v1/c158b4e6-4f14-49ec-87fa-fbf3fac259bd/token"
 const instanceLocator = "v1:us1:c158b4e6-4f14-49ec-87fa-fbf3fac259bd"
 const roomId = 12682195
-const username = 'gregarious_96'
+const username = "Blake_B"
 
 class App extends React.Component {
     constructor() {
@@ -15,10 +15,10 @@ class App extends React.Component {
     
     componentDidMount() {
         const chatManager = new Chatkit.ChatManager({
-            instanceLocator: instanceLocator,
-            userId: 'janedoe',
+            instanceLocator:"v1:us1:c158b4e6-4f14-49ec-87fa-fbf3fac259bd",
+            userId:"Blake_B",
             tokenProvider: new Chatkit.TokenProvider({
-                url: testToken
+                url:"https://us1.pusherplatform.io/services/chatkit_token_provider/v1/c158b4e6-4f14-49ec-87fa-fbf3fac259bd/token"
             })
         })
         
@@ -26,7 +26,7 @@ class App extends React.Component {
         .then(currentUser => {
             this.currentUser = currentUser
             this.currentUser.subscribeToRoom({
-            roomId: roomId,
+            roomId:12682195,
             hooks: {
                 onNewMessage: message => {
 
