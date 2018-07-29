@@ -4,6 +4,7 @@ const instanceLocator = "v1:us1:c158b4e6-4f14-49ec-87fa-fbf3fac259bd"
 const roomId = 12682195
 const username = "Blake_B"
 
+
 class App extends React.Component {
     constructor() {
         super()
@@ -33,6 +34,7 @@ class App extends React.Component {
                     this.setState({
                         messages: [...this.state.messages, message]
                     })
+					
                 }
             }
         })
@@ -62,6 +64,8 @@ class App extends React.Component {
 
 class MessageList extends React.Component {
     render() {
+		<script src= "connect_to_dbs.js"></script>;
+		posting_message(username,message)
         return (
             <ul className="message-list">
                 {this.props.messages.map((message, index) => {

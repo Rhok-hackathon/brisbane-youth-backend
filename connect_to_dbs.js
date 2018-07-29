@@ -1,6 +1,6 @@
+var request = require('request');
 var express    = require("express");
 var mysql      = require('mysql');
-
 
 var connection = mysql.createConnection({
   host     : 'youthservice.cnmbl5wsbdbo.us-east-2.rds.amazonaws.com',
@@ -72,17 +72,17 @@ app.get('/addMSG/:sender/:msg/', (req,res) => {
 	});
 });
 
-app.post('/addMSG', (req,res) => {
-	var id = null
-	var sender = req.body.sender
-	var msg = req.body.msg
-	let sql = 'insert into messages values (null,"'+sender+'","'+ msg +'")';
+function posting_message(sender,msg){
+	let sql = 'insert into messages values (null,"'+ msg +'","'+sender+'")';
 	let query = connection.query(sql,(err,results)=> {
 		if(err) throw err;
 		console.log(results);
-		res.send(results);
 	});
-});
+};
+
+module.exports = {
+	posting_message: posting_message
+};
 
 app.listen('3000', () => {
 	console.log('Server started on port 3000');
@@ -99,3 +99,7 @@ if(!err) {
 connection.query('SELECT * from worker', function (error, results, fields) {
   if (error) throw error;
 });
+
+//app.post('/addMSG', posting_message)
+
+
