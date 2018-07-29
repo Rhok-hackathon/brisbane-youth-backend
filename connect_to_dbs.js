@@ -22,4 +22,6 @@ if(!err) {
 
 connection.query('SELECT * from worker', function (error, results, fields) {
   if (error) throw error;
+  console.log(results)
 });
+
